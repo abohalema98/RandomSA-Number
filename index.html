@@ -46,6 +46,8 @@
       <button class="btn" onclick="generateRandomSANumber()">
         Generate Number
       </button>
+
+      <button class="btn" onclick="copyToClipboard()">Copy Number</button>
     </div>
 
     <script>
@@ -56,6 +58,16 @@
           number += Math.floor(Math.random() * 10).toString();
         }
         document.getElementById("saNumber").textContent = prefix + number;
+      }
+
+      function copyToClipboard() {
+        const numberText = document.getElementById("saNumber").textContent;
+        const tempInput = document.createElement("input");
+        tempInput.value = numberText;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
       }
     </script>
   </body>
